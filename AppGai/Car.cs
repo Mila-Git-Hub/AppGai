@@ -27,7 +27,9 @@ namespace AppGai
         public string color { get; set; }
         public int madeYear { get; set; }
         public System.DateTime dateOfRegistration { get; set; }
-    
+
+        public string TitleMark { get => Mark1.nameMark; }
+
         public virtual Mark Mark1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DriversCars> DriversCars { get; set; }

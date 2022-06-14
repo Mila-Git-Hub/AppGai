@@ -30,7 +30,7 @@
         <DataGrid Grid.Row="2" Grid.ColumnSpan="2" AutoGenerateColumns="False" Name="cartable">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Гос.Номер" Width="*" Binding="{Binding StateNumber}"/>
-                <DataGridTextColumn Header="Марка" Width="*" Binding="{Binding mark}"/>
+                <DataGridTextColumn Header="Марка" Width="*" Binding="{Binding TitleMark}"/>
                 <DataGridTextColumn Header="Модель" Width="*" Binding="{Binding model}"/>
                 <DataGridTextColumn Header="Цвет" Width="*" Binding="{Binding color}"/>
                 <DataGridTextColumn Header="Год выпуска" Width="*" Binding="{Binding madeYear}"/>
