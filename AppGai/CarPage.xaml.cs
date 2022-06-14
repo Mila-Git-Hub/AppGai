@@ -26,6 +26,36 @@ namespace AppGai
             InitializeComponent();
             context = new GaiDBEntities();
             cartable.ItemsSource = context.Car.ToList();
+
+            var markList = context.Mark.ToList();
+            markList.Insert(0, new Mark() { nameMark = "Все", idMark = 0});
+            markbox.ItemsSource = markList;
+        }
+
+        public void RefreshData()
+        {
+            var list = context.Car.ToList();
+            if (markbox.SelectedIndex > 0)
+            {
+                Mark pos = markbox.SelectedItem as Mark;
+                list = list.Where(x => x.Mark1 == pos).ToList();
+            }
+
+            if (string.IsNullOrWhiteSpace(numbox.Text))
+            {
+                list = list.Where(x => x.StateNumber.ToLower().Contains(numbox.Text.ToLower())).ToList();
+            }
+            cartable.ItemsSource = list;
+        }
+
+        private void ChangeMark(object sender, SelectionChangedEventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void ChengeNum(object sender, TextChangedEventArgs e)
+        {
+            RefreshData();
         }
     }
 }

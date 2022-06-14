@@ -21,11 +21,11 @@
         <Label Content="Автомобили" HorizontalAlignment="Center" Grid.ColumnSpan="2" FontSize="20"/>
         <StackPanel Orientation="Horizontal" Grid.Row="1">
             <Label Content="Введите Гос.номер" VerticalAlignment="Center"/>
-            <TextBox x:Name="numbox" Width="250" VerticalAlignment="Center"/>
+            <TextBox x:Name="numbox" Width="250" VerticalAlignment="Center" TextChanged="ChengeNum"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
             <Label Content="Выберите марку" VerticalAlignment="Center"/>
-            <ComboBox x:Name="markbox" Width="250" VerticalAlignment="Center"/>
+            <ComboBox x:Name="markbox" Width="250" VerticalAlignment="Center" DisplayMemberPath="nameMark" SelectionChanged="ChangeMark"/>
         </StackPanel>
         <DataGrid Grid.Row="2" Grid.ColumnSpan="2" AutoGenerateColumns="False" Name="cartable">
             <DataGrid.Columns>

@@ -27,5 +27,21 @@ namespace AppGai
             context = new GaiDBEntities();
             violationTable.ItemsSource = context.Violation.ToList();
         }
+
+        public void RefreshData()
+        {
+            var list = context.Violation.ToList();           
+
+            if (string.IsNullOrWhiteSpace(naimenbox.Text))
+            {
+                list = list.Where(x => x.title.ToLower().Contains(naimenbox.Text.ToLower())).ToList();
+            }
+            violationTable.ItemsSource = list;
+        }
+
+        private void ChengeNaimen(object sender, TextChangedEventArgs e)
+        {
+            RefreshData();
+        }
     }
 }
