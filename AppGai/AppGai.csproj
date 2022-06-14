@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddWorker.xaml.cs">
+      <DependentUpon>AddWorker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Car.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -114,6 +117,10 @@
     <Compile Include="WinOsn.xaml.cs">
       <DependentUpon>WinOsn.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddWorker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CarPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

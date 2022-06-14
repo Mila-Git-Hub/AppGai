@@ -25,11 +25,7 @@ namespace AppGai
         {
             InitializeComponent();
             context = new GaiDBEntities();
-            cartable.ItemsSource = context.Car.ToList();
-
-            var markList = context.Mark.ToList();
-            markList.Insert(0, new Mark() { nameMark = "Все", idMark = 0});
-            markbox.ItemsSource = markList;
+            cartable.ItemsSource = context.Car.ToList();            
         }
 
         public void RefreshData()

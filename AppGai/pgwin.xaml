@@ -22,6 +22,6 @@
                 <Button Content="Автомобили" Click="ShowCars" Margin="10"/>
             </StackPanel>
         </Grid>
-        <Frame Grid.Column="1" x:Name="myFrame"/>
+        <Frame Grid.Column="1" x:Name="myFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

@@ -27,5 +27,35 @@ namespace AppGai
             context = new GaiDBEntities();
             driverTable.ItemsSource = context.Driver.ToList();
         }
+
+        private void AddDriver(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddWorker(context));
+        }
+
+        private void EditDriver(object sender, RoutedEventArgs e)
+        {
+            Driver driver = driverTable.SelectedItem as Driver;
+            NavigationService.Navigate(new AddWorker(context, driver));
+        }
+
+        private void DeleteDriver(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult res = MessageBox.Show("Вы уверены, что хотите удалить водителя?", "Подтверждение", MessageBoxButton.YesNo);
+            if (res == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    Driver driver = driverTable.SelectedItem as Driver;                   
+                    context.Driver.Remove(driver);
+                    context.SaveChanges();
+                    NavigationService.Navigate(new DriverPage());
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка, удалите все зарегистрированные машины водителя!");
+                }
+            }
+        }
     }
 }

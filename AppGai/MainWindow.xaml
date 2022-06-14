@@ -38,6 +38,6 @@
             <TextBox x:Name="password" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Grid.Row="4"/>
             <Button x:Name="enter" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Width="100" Click="EnterClick">Вход</Button>
         </Grid>
-        <Frame x:Name="myFrame" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
+        <Frame x:Name="myFrame" Grid.ColumnSpan="3" Grid.RowSpan="3" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
