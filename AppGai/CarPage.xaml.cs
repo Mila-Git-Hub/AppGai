@@ -25,7 +25,10 @@ namespace AppGai
         {
             InitializeComponent();
             context = new GaiDBEntities();
-            cartable.ItemsSource = context.Car.ToList();            
+            cartable.ItemsSource = context.Car.ToList();
+            var markList = context.Mark.ToList();
+            markList.Insert(0, new Mark() { nameMark = "Все", idMark = 0});
+            markbox.ItemsSource = markList;
         }
 
         public void RefreshData()
@@ -36,6 +39,8 @@ namespace AppGai
                 Mark pos = markbox.SelectedItem as Mark;
                 list = list.Where(x => x.Mark1 == pos).ToList();
             }
+
+            list = list.Where(x => x.StateNumber.ToLower().Contains(numbox.Text.ToLower())).ToList();
 
             if (string.IsNullOrWhiteSpace(numbox.Text))
             {

@@ -30,7 +30,9 @@ namespace AppGai
 
         public void RefreshData()
         {
-            var list = context.Violation.ToList();           
+            var list = context.Violation.ToList();
+
+            list = list.Where(x => x.title.ToLower().Contains(naimenbox.Text.ToLower())).ToList();
 
             if (string.IsNullOrWhiteSpace(naimenbox.Text))
             {
