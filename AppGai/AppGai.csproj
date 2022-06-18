@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddViolations.xaml.cs">
+      <DependentUpon>AddViolations.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddWorker.xaml.cs">
       <DependentUpon>AddWorker.xaml</DependentUpon>
     </Compile>
@@ -117,6 +120,10 @@
     <Compile Include="WinOsn.xaml.cs">
       <DependentUpon>WinOsn.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddViolations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddWorker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

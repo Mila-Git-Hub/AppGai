@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ViolationPage">
 
-    <Grid Background="#fecb00">
+    <Grid Background="#b4c7e7">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -17,6 +17,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition Height="10*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Label Content="Нарушения" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="20"/>
         <StackPanel Orientation="Horizontal" Grid.Row="1">
@@ -30,6 +31,13 @@
                 <DataGridTextColumn Header="Штраф" Width="*" Binding="{Binding penaltyRange}"/>
                 <DataGridTextColumn Header="Лишение прав" Width="*" Binding="{Binding deprivationLicense}"/>
             </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Редактировать" Click="EditViolation"/>
+                    <MenuItem Header="Удалить" Click="DeleteViolation"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
+        <Button Content="Добавить" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Grid.Row="3" Grid.ColumnSpan="2" Click="AddViolation"/>
     </Grid>
 </Page>

@@ -21,6 +21,7 @@ namespace AppGai
     public partial class ViolationPage : Page
     {
         GaiDBEntities context;
+        
         public ViolationPage()
         {
             InitializeComponent();
@@ -44,6 +45,36 @@ namespace AppGai
         private void ChengeNaimen(object sender, TextChangedEventArgs e)
         {
             RefreshData();
+        }
+
+        private void AddViolation(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddViolations(context));
+        }
+
+        private void EditViolation(object sender, RoutedEventArgs e)
+        {
+            Violation violation = violationTable.SelectedItem as Violation;
+            NavigationService.Navigate(new AddViolations(context, violation));
+        }
+
+        private void DeleteViolation(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult res = MessageBox.Show("Вы уверены, что хотите удалить нарушение?", "Подтверждение", MessageBoxButton.YesNo);
+            if (res == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    Violation violation = violationTable.SelectedItem as Violation;
+                    context.Violation.Remove(violation);
+                    context.SaveChanges();
+                    NavigationService.Navigate(new ViolationPage());
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка, удалите все зарегистрированные инциденты при нарушениях!");
+                }
+            }
         }
     }
 }
