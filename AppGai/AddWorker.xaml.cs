@@ -69,6 +69,5 @@ namespace AppGai
             phonebox.Text = driver.phone.ToString();
             flag = false;
         }
-
     }
 }

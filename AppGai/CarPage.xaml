@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CarPage">
 
-    <Grid Background="#fecb00">
+    <Grid Background="#b4c7e7">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -17,6 +17,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition Height="10*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Label Content="Автомобили" HorizontalAlignment="Center" Grid.ColumnSpan="2" FontSize="20"/>
         <StackPanel Orientation="Horizontal" Grid.Row="1">
@@ -35,6 +36,13 @@
                 <DataGridTextColumn Header="Цвет" Width="*" Binding="{Binding color}"/>
                 <DataGridTextColumn Header="Год выпуска" Width="*" Binding="{Binding madeYear}"/>
             </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Редактировать" Click="EditCar"/>
+                    <MenuItem Header="Удалить" Click="DeleteCar"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
+        <Button Content="Добавить" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Grid.Row="3" Grid.ColumnSpan="2" Click="AddCar"/>
     </Grid>
 </Page>

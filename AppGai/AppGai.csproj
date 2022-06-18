@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddCars.xaml.cs">
+      <DependentUpon>AddCars.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddViolations.xaml.cs">
       <DependentUpon>AddViolations.xaml</DependentUpon>
     </Compile>
@@ -120,6 +123,10 @@
     <Compile Include="WinOsn.xaml.cs">
       <DependentUpon>WinOsn.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddCars.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddViolations.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

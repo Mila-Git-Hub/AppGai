@@ -58,5 +58,35 @@ namespace AppGai
         {
             RefreshData();
         }
+
+        private void AddCar(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddCars(context));
+        }
+
+        private void EditCar(object sender, RoutedEventArgs e)
+        {
+            Car car = cartable.SelectedItem as Car;
+            NavigationService.Navigate(new AddCars(context, car));
+        }
+
+        private void DeleteCar(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult res = MessageBox.Show("Вы уверены, что хотите удалить автомобиль?", "Подтверждение", MessageBoxButton.YesNo);
+            if (res == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    Car car = cartable.SelectedItem as Car;
+                    context.Car.Remove(car);
+                    context.SaveChanges();
+                    NavigationService.Navigate(new CarPage());
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка, удалите всех зарегистрированных водителей автомобиля!");
+                }
+            }
+        }
     }
 }
