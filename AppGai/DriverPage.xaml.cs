@@ -57,5 +57,23 @@ namespace AppGai
                 }
             }
         }
+
+        public void RefreshData()
+        {
+            var list = context.Driver.ToList();
+
+            list = list.Where(x => x.name.ToLower().Contains(docbox.Text.ToLower())).ToList();
+
+            if (string.IsNullOrWhiteSpace(docbox.Text))
+            {
+                list = list.Where(x => x.name.ToLower().Contains(docbox.Text.ToLower())).ToList();
+            }
+            driverTable.ItemsSource = list;
+        }
+
+        private void ChengeDoc(object sender, TextChangedEventArgs e)
+        {
+            RefreshData();
+        }
     }
 }
