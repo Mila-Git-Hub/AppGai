@@ -27,6 +27,7 @@ namespace AppGai
         public string color { get; set; }
         public int madeYear { get; set; }
         public System.DateTime dateOfRegistration { get; set; }
+        public string fioDriver { get; set; }
 
         public string TitleMark { get => Mark1.nameMark; }
 

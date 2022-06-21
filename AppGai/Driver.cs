@@ -25,7 +25,10 @@ namespace AppGai
         public string name { get; set; }
         public string adres { get; set; }
         public decimal phone { get; set; }
-    
+
+        public string NumDoc { get => Doc.nameDoc; }
+
+        public virtual Doc Doc { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DriversCars> DriversCars { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

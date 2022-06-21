@@ -35,6 +35,7 @@
                 <DataGridTextColumn Header="Модель" Width="*" Binding="{Binding model}"/>
                 <DataGridTextColumn Header="Цвет" Width="*" Binding="{Binding color}"/>
                 <DataGridTextColumn Header="Год выпуска" Width="*" Binding="{Binding madeYear}"/>
+                <DataGridTextColumn Header="ФИО текущего Владельца" Width="2*" Binding="{Binding fioDriver}"/>
             </DataGrid.Columns>
             <DataGrid.ContextMenu>
                 <ContextMenu>

@@ -20,8 +20,8 @@ namespace AppGai
     /// </summary>
     public partial class AddCars : Page
     {
-        GaiDBEntities context;
-        public AddCars(GaiDBEntities cont)
+        GaiDB4Entities context;
+        public AddCars(GaiDB4Entities cont)
         {
             InitializeComponent();
             context = cont;
@@ -62,7 +62,7 @@ namespace AppGai
 
         Car carmin;
 
-        public AddCars(GaiDBEntities cont, Car car) //конструктор редактирования
+        public AddCars(GaiDB4Entities cont, Car car) //конструктор редактирования
         {
             InitializeComponent();
             context = cont;

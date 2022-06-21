@@ -24,6 +24,7 @@ namespace AppGai
         public string title { get; set; }
         public string penaltyRange { get; set; }
         public string deprivationLicense { get; set; }
+        public byte[] image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<IncidentsVolations> IncidentsVolations { get; set; }

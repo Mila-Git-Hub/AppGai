@@ -20,11 +20,11 @@ namespace AppGai
     /// </summary>
     public partial class DriverPage : Page
     {
-        GaiDBEntities context;
+        GaiDB4Entities context;
         public DriverPage()
         {
             InitializeComponent();
-            context = new GaiDBEntities();
+            context = new GaiDB4Entities();
             driverTable.ItemsSource = context.Driver.ToList();
         }
 

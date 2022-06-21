@@ -20,8 +20,8 @@ namespace AppGai
     /// </summary>
     public partial class AddViolations : Page
     {
-        GaiDBEntities context;
-        public AddViolations(GaiDBEntities cont)
+        GaiDB4Entities context;
+        public AddViolations(GaiDB4Entities cont)
         {
             InitializeComponent();
             context = cont;
@@ -56,7 +56,7 @@ namespace AppGai
         }
         Violation vil;
 
-        public AddViolations(GaiDBEntities cont, Violation violation) //конструктор редактирования
+        public AddViolations(GaiDB4Entities cont, Violation violation) //конструктор редактирования
         {
             InitializeComponent();
             context = cont;

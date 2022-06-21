@@ -22,7 +22,7 @@
         <Label Content="Водители" HorizontalAlignment="Center" Grid.ColumnSpan="2" FontSize="20"/>
         <DataGrid Grid.Row="2" Grid.ColumnSpan="2" AutoGenerateColumns="False" Name="driverTable">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID водителя" Width="*" Binding="{Binding numDriverDocument}"/>
+                <DataGridTextColumn Header="Номер Водительского удостоверения" Width="2*" Binding="{Binding NumDoc}"/>
                 <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding name}"/>
                 <DataGridTextColumn Header="Адрес" Width="*" Binding="{Binding adres}"/>
                 <DataGridTextColumn Header="Телефон" Width="*" Binding="{Binding phone}"/>

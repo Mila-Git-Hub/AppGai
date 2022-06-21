@@ -13,10 +13,10 @@ namespace AppGai
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class GaiDBEntities : DbContext
+    public partial class GaiDB4Entities : DbContext
     {
-        public GaiDBEntities()
-            : base("name=GaiDBEntities")
+        public GaiDB4Entities()
+            : base("name=GaiDB4Entities")
         {
         }
     
@@ -26,6 +26,7 @@ namespace AppGai
         }
     
         public virtual DbSet<Car> Car { get; set; }
+        public virtual DbSet<Doc> Doc { get; set; }
         public virtual DbSet<Driver> Driver { get; set; }
         public virtual DbSet<DriversCars> DriversCars { get; set; }
         public virtual DbSet<Incident> Incident { get; set; }

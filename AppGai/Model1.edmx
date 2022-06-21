@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище GaiDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище GaiDB4Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Car">
           <Key>
             <PropertyRef Name="StateNumber" />
@@ -15,6 +15,14 @@
           <Property Name="color" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="madeYear" Type="int" Nullable="false" />
           <Property Name="dateOfRegistration" Type="date" Nullable="false" />
+          <Property Name="fioDriver" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Doc">
+          <Key>
+            <PropertyRef Name="idDoc" />
+          </Key>
+          <Property Name="idDoc" Type="int" Nullable="false" />
+          <Property Name="nameDoc" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Driver">
           <Key>
@@ -97,6 +105,7 @@
           <Property Name="title" Type="nvarchar(max)" Nullable="false" />
           <Property Name="penaltyRange" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="deprivationLicense" Type="nvarchar" MaxLength="50" />
+          <Property Name="image" Type="binary" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Car_Mark">
           <End Role="Mark" Type="Self.Mark" Multiplicity="1" />
@@ -107,6 +116,18 @@
             </Principal>
             <Dependent Role="Car">
               <PropertyRef Name="mark" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Driver_Doc">
+          <End Role="Doc" Type="Self.Doc" Multiplicity="1" />
+          <End Role="Driver" Type="Self.Driver" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Doc">
+              <PropertyRef Name="idDoc" />
+            </Principal>
+            <Dependent Role="Driver">
+              <PropertyRef Name="numDriverDocument" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -206,8 +227,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище GaiDBModelContainer">
+        <EntityContainer Name="Хранилище GaiDB4ModelContainer">
           <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doc" EntityType="Self.Doc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DriversCars" EntityType="Self.DriversCars" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Incident" EntityType="Self.Incident" Schema="dbo" store:Type="Tables" />
@@ -220,6 +242,10 @@
           <AssociationSet Name="FK_Car_Mark" Association="Self.FK_Car_Mark">
             <End Role="Mark" EntitySet="Mark" />
             <End Role="Car" EntitySet="Car" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Driver_Doc" Association="Self.FK_Driver_Doc">
+            <End Role="Doc" EntitySet="Doc" />
+            <End Role="Driver" EntitySet="Driver" />
           </AssociationSet>
           <AssociationSet Name="FK_DriversCars_Car" Association="Self.FK_DriversCars_Car">
             <End Role="Car" EntitySet="Car" />
@@ -258,7 +284,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="GaiDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="GaiDB4Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Car">
           <Key>
             <PropertyRef Name="StateNumber" />
@@ -269,9 +295,18 @@
           <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="madeYear" Type="Int32" Nullable="false" />
           <Property Name="dateOfRegistration" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fioDriver" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Mark1" Relationship="Self.FK_Car_Mark" FromRole="Car" ToRole="Mark" />
           <NavigationProperty Name="DriversCars" Relationship="Self.FK_DriversCars_Car" FromRole="Car" ToRole="DriversCars" />
           <NavigationProperty Name="Incident" Relationship="Self.FK_Incident_Car" FromRole="Car" ToRole="Incident" />
+        </EntityType>
+        <EntityType Name="Doc">
+          <Key>
+            <PropertyRef Name="idDoc" />
+          </Key>
+          <Property Name="idDoc" Type="Int32" Nullable="false" />
+          <Property Name="nameDoc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Driver" Relationship="Self.FK_Driver_Doc" FromRole="Doc" ToRole="Driver" />
         </EntityType>
         <EntityType Name="Driver">
           <Key>
@@ -281,6 +316,7 @@
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="phone" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Doc" Relationship="Self.FK_Driver_Doc" FromRole="Driver" ToRole="Doc" />
           <NavigationProperty Name="DriversCars" Relationship="Self.FK_DriversCars_Driver" FromRole="Driver" ToRole="DriversCars" />
           <NavigationProperty Name="Incident" Relationship="Self.FK_Incident_Driver" FromRole="Driver" ToRole="Incident" />
         </EntityType>
@@ -368,6 +404,7 @@
           <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="penaltyRange" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="deprivationLicense" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="Binary" MaxLength="50" FixedLength="true" />
           <NavigationProperty Name="IncidentsVolations" Relationship="Self.FK_IncidentsVolations_Violation" FromRole="Violation" ToRole="IncidentsVolations" />
         </EntityType>
         <Association Name="FK_Car_Mark">
@@ -403,6 +440,18 @@
             </Principal>
             <Dependent Role="Incident">
               <PropertyRef Name="idCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Driver_Doc">
+          <End Role="Doc" Type="Self.Doc" Multiplicity="1" />
+          <End Role="Driver" Type="Self.Driver" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Doc">
+              <PropertyRef Name="idDoc" />
+            </Principal>
+            <Dependent Role="Driver">
+              <PropertyRef Name="numDriverDocument" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -478,8 +527,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="GaiDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="GaiDB4Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Car" EntityType="Self.Car" />
+          <EntitySet Name="Doc" EntityType="Self.Doc" />
           <EntitySet Name="Driver" EntityType="Self.Driver" />
           <EntitySet Name="DriversCars" EntityType="Self.DriversCars" />
           <EntitySet Name="Incident" EntityType="Self.Incident" />
@@ -500,6 +550,10 @@
           <AssociationSet Name="FK_Incident_Car" Association="Self.FK_Incident_Car">
             <End Role="Car" EntitySet="Car" />
             <End Role="Incident" EntitySet="Incident" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Driver_Doc" Association="Self.FK_Driver_Doc">
+            <End Role="Doc" EntitySet="Doc" />
+            <End Role="Driver" EntitySet="Driver" />
           </AssociationSet>
           <AssociationSet Name="FK_DriversCars_Driver" Association="Self.FK_DriversCars_Driver">
             <End Role="Driver" EntitySet="Driver" />
@@ -531,9 +585,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище GaiDBModelContainer" CdmEntityContainer="GaiDBEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище GaiDB4ModelContainer" CdmEntityContainer="GaiDB4Entities">
           <EntitySetMapping Name="Car">
-            <EntityTypeMapping TypeName="GaiDBModel.Car">
+            <EntityTypeMapping TypeName="GaiDB4Model.Car">
               <MappingFragment StoreEntitySet="Car">
                 <ScalarProperty Name="StateNumber" ColumnName="StateNumber" />
                 <ScalarProperty Name="mark" ColumnName="mark" />
@@ -541,11 +595,20 @@
                 <ScalarProperty Name="color" ColumnName="color" />
                 <ScalarProperty Name="madeYear" ColumnName="madeYear" />
                 <ScalarProperty Name="dateOfRegistration" ColumnName="dateOfRegistration" />
+                <ScalarProperty Name="fioDriver" ColumnName="fioDriver" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doc">
+            <EntityTypeMapping TypeName="GaiDB4Model.Doc">
+              <MappingFragment StoreEntitySet="Doc">
+                <ScalarProperty Name="idDoc" ColumnName="idDoc" />
+                <ScalarProperty Name="nameDoc" ColumnName="nameDoc" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Driver">
-            <EntityTypeMapping TypeName="GaiDBModel.Driver">
+            <EntityTypeMapping TypeName="GaiDB4Model.Driver">
               <MappingFragment StoreEntitySet="Driver">
                 <ScalarProperty Name="numDriverDocument" ColumnName="numDriverDocument" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -555,7 +618,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DriversCars">
-            <EntityTypeMapping TypeName="GaiDBModel.DriversCars">
+            <EntityTypeMapping TypeName="GaiDB4Model.DriversCars">
               <MappingFragment StoreEntitySet="DriversCars">
                 <ScalarProperty Name="idDriver" ColumnName="idDriver" />
                 <ScalarProperty Name="idCar" ColumnName="idCar" />
@@ -565,7 +628,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Incident">
-            <EntityTypeMapping TypeName="GaiDBModel.Incident">
+            <EntityTypeMapping TypeName="GaiDB4Model.Incident">
               <MappingFragment StoreEntitySet="Incident">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idInspector" ColumnName="idInspector" />
@@ -578,7 +641,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="IncidentsVolations">
-            <EntityTypeMapping TypeName="GaiDBModel.IncidentsVolations">
+            <EntityTypeMapping TypeName="GaiDB4Model.IncidentsVolations">
               <MappingFragment StoreEntitySet="IncidentsVolations">
                 <ScalarProperty Name="idIncident" ColumnName="idIncident" />
                 <ScalarProperty Name="idVolation" ColumnName="idVolation" />
@@ -588,7 +651,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Inspector">
-            <EntityTypeMapping TypeName="GaiDBModel.Inspector">
+            <EntityTypeMapping TypeName="GaiDB4Model.Inspector">
               <MappingFragment StoreEntitySet="Inspector">
                 <ScalarProperty Name="tabNum" ColumnName="tabNum" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -597,7 +660,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Mark">
-            <EntityTypeMapping TypeName="GaiDBModel.Mark">
+            <EntityTypeMapping TypeName="GaiDB4Model.Mark">
               <MappingFragment StoreEntitySet="Mark">
                 <ScalarProperty Name="idMark" ColumnName="idMark" />
                 <ScalarProperty Name="nameMark" ColumnName="nameMark" />
@@ -605,7 +668,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="State">
-            <EntityTypeMapping TypeName="GaiDBModel.State">
+            <EntityTypeMapping TypeName="GaiDB4Model.State">
               <MappingFragment StoreEntitySet="State">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -613,7 +676,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="GaiDBModel.sysdiagrams">
+            <EntityTypeMapping TypeName="GaiDB4Model.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -624,12 +687,13 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Violation">
-            <EntityTypeMapping TypeName="GaiDBModel.Violation">
+            <EntityTypeMapping TypeName="GaiDB4Model.Violation">
               <MappingFragment StoreEntitySet="Violation">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="penaltyRange" ColumnName="penaltyRange" />
                 <ScalarProperty Name="deprivationLicense" ColumnName="deprivationLicense" />
+                <ScalarProperty Name="image" ColumnName="image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
