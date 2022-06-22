@@ -20,11 +20,11 @@ namespace AppGai
     /// </summary>
     public partial class MainWindow : Window
     {
-        GaiDB4Entities context;
+        GaiDB5Entities context;
         public MainWindow()
         {
             InitializeComponent();
-            context = new GaiDB4Entities();
+            context = new GaiDB5Entities();
         }
         int count = 0;
         private void EnterClick(object sender, RoutedEventArgs e)

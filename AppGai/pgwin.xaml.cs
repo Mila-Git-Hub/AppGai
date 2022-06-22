@@ -23,7 +23,7 @@ namespace AppGai
     {
         public pgwin()
         {
-            InitializeComponent();
+            InitializeComponent();             
             myFrame.Navigate(new ViolationPage());
         }
 
@@ -40,6 +40,26 @@ namespace AppGai
         private void ShowCars(object sender, RoutedEventArgs e)
         {
             myFrame.Navigate(new CarPage());
-        }                
+        }
+
+        public void DownloadPictures()
+        {
+            GaiDB5Entities context = new GaiDB5Entities();
+
+            List<Violation> violations = context.Violation.ToList();
+            
+            foreach (var item in violations)
+            {
+                item.image = File.ReadAllBytes(@"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\PicturesGai\" + item.id + ".jpg");
+            }
+
+            context.SaveChanges();
+
+        }
+
+        private void ShowListViolation(object sender, RoutedEventArgs e)
+        {
+            myFrame.Navigate(new ListViolationPage());
+        }
     }
 }

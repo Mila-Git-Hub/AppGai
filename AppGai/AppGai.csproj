@@ -97,8 +97,14 @@
     <Compile Include="IncidentsVolations.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="InformationViolationPage.xaml.cs">
+      <DependentUpon>InformationViolationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Inspector.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ListViolationPage.xaml.cs">
+      <DependentUpon>ListViolationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Mark.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -153,6 +159,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DriverPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InformationViolationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListViolationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

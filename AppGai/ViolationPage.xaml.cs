@@ -20,12 +20,12 @@ namespace AppGai
     /// </summary>
     public partial class ViolationPage : Page
     {
-        GaiDB4Entities context;
+        GaiDB5Entities context;
         
         public ViolationPage()
         {
             InitializeComponent();
-            context = new GaiDB4Entities();
+            context = new GaiDB5Entities();
             violationTable.ItemsSource = context.Violation.ToList();
         }
 

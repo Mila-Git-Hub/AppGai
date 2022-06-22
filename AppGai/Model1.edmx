@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище GaiDB4Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище GaiDB5Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Car">
           <Key>
             <PropertyRef Name="StateNumber" />
@@ -105,7 +105,7 @@
           <Property Name="title" Type="nvarchar(max)" Nullable="false" />
           <Property Name="penaltyRange" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="deprivationLicense" Type="nvarchar" MaxLength="50" />
-          <Property Name="image" Type="binary" MaxLength="50" />
+          <Property Name="image" Type="image" />
         </EntityType>
         <Association Name="FK_Car_Mark">
           <End Role="Mark" Type="Self.Mark" Multiplicity="1" />
@@ -227,7 +227,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище GaiDB4ModelContainer">
+        <EntityContainer Name="Хранилище GaiDB5ModelContainer">
           <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Doc" EntityType="Self.Doc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
@@ -284,7 +284,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="GaiDB4Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="GaiDB5Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Car">
           <Key>
             <PropertyRef Name="StateNumber" />
@@ -404,7 +404,7 @@
           <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="penaltyRange" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="deprivationLicense" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="image" Type="Binary" MaxLength="50" FixedLength="true" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="IncidentsVolations" Relationship="Self.FK_IncidentsVolations_Violation" FromRole="Violation" ToRole="IncidentsVolations" />
         </EntityType>
         <Association Name="FK_Car_Mark">
@@ -527,7 +527,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="GaiDB4Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="GaiDB5Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Car" EntityType="Self.Car" />
           <EntitySet Name="Doc" EntityType="Self.Doc" />
           <EntitySet Name="Driver" EntityType="Self.Driver" />
@@ -585,9 +585,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище GaiDB4ModelContainer" CdmEntityContainer="GaiDB4Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище GaiDB5ModelContainer" CdmEntityContainer="GaiDB5Entities">
           <EntitySetMapping Name="Car">
-            <EntityTypeMapping TypeName="GaiDB4Model.Car">
+            <EntityTypeMapping TypeName="GaiDB5Model.Car">
               <MappingFragment StoreEntitySet="Car">
                 <ScalarProperty Name="StateNumber" ColumnName="StateNumber" />
                 <ScalarProperty Name="mark" ColumnName="mark" />
@@ -600,7 +600,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Doc">
-            <EntityTypeMapping TypeName="GaiDB4Model.Doc">
+            <EntityTypeMapping TypeName="GaiDB5Model.Doc">
               <MappingFragment StoreEntitySet="Doc">
                 <ScalarProperty Name="idDoc" ColumnName="idDoc" />
                 <ScalarProperty Name="nameDoc" ColumnName="nameDoc" />
@@ -608,7 +608,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Driver">
-            <EntityTypeMapping TypeName="GaiDB4Model.Driver">
+            <EntityTypeMapping TypeName="GaiDB5Model.Driver">
               <MappingFragment StoreEntitySet="Driver">
                 <ScalarProperty Name="numDriverDocument" ColumnName="numDriverDocument" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -618,7 +618,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DriversCars">
-            <EntityTypeMapping TypeName="GaiDB4Model.DriversCars">
+            <EntityTypeMapping TypeName="GaiDB5Model.DriversCars">
               <MappingFragment StoreEntitySet="DriversCars">
                 <ScalarProperty Name="idDriver" ColumnName="idDriver" />
                 <ScalarProperty Name="idCar" ColumnName="idCar" />
@@ -628,7 +628,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Incident">
-            <EntityTypeMapping TypeName="GaiDB4Model.Incident">
+            <EntityTypeMapping TypeName="GaiDB5Model.Incident">
               <MappingFragment StoreEntitySet="Incident">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idInspector" ColumnName="idInspector" />
@@ -641,7 +641,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="IncidentsVolations">
-            <EntityTypeMapping TypeName="GaiDB4Model.IncidentsVolations">
+            <EntityTypeMapping TypeName="GaiDB5Model.IncidentsVolations">
               <MappingFragment StoreEntitySet="IncidentsVolations">
                 <ScalarProperty Name="idIncident" ColumnName="idIncident" />
                 <ScalarProperty Name="idVolation" ColumnName="idVolation" />
@@ -651,7 +651,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Inspector">
-            <EntityTypeMapping TypeName="GaiDB4Model.Inspector">
+            <EntityTypeMapping TypeName="GaiDB5Model.Inspector">
               <MappingFragment StoreEntitySet="Inspector">
                 <ScalarProperty Name="tabNum" ColumnName="tabNum" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -660,7 +660,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Mark">
-            <EntityTypeMapping TypeName="GaiDB4Model.Mark">
+            <EntityTypeMapping TypeName="GaiDB5Model.Mark">
               <MappingFragment StoreEntitySet="Mark">
                 <ScalarProperty Name="idMark" ColumnName="idMark" />
                 <ScalarProperty Name="nameMark" ColumnName="nameMark" />
@@ -668,7 +668,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="State">
-            <EntityTypeMapping TypeName="GaiDB4Model.State">
+            <EntityTypeMapping TypeName="GaiDB5Model.State">
               <MappingFragment StoreEntitySet="State">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -676,7 +676,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="GaiDB4Model.sysdiagrams">
+            <EntityTypeMapping TypeName="GaiDB5Model.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -687,7 +687,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Violation">
-            <EntityTypeMapping TypeName="GaiDB4Model.Violation">
+            <EntityTypeMapping TypeName="GaiDB5Model.Violation">
               <MappingFragment StoreEntitySet="Violation">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />

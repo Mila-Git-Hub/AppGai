@@ -20,8 +20,8 @@ namespace AppGai
     /// </summary>
     public partial class AddWorker : Page
     {
-        GaiDB4Entities context;
-        public AddWorker(GaiDB4Entities cont)
+        GaiDB5Entities context;
+        public AddWorker(GaiDB5Entities cont)
         {
             InitializeComponent();
             context = cont;
@@ -58,7 +58,7 @@ namespace AppGai
 
         Driver driv;
 
-        public AddWorker(GaiDB4Entities cont, Driver driver) //конструктор редактирования
+        public AddWorker(GaiDB5Entities cont, Driver driver) //конструктор редактирования
         {
             InitializeComponent();
             context = cont;

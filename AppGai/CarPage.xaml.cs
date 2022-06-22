@@ -20,11 +20,11 @@ namespace AppGai
     /// </summary>
     public partial class CarPage : Page
     {
-        GaiDB4Entities context;
+        GaiDB5Entities context;
         public CarPage()
         {
             InitializeComponent();
-            context = new GaiDB4Entities();
+            context = new GaiDB5Entities();
             cartable.ItemsSource = context.Car.ToList();
             var markList = context.Mark.ToList();
             markList.Insert(0, new Mark() { nameMark = "Все", idMark = 0});

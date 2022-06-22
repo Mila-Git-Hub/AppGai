@@ -13,10 +13,10 @@ namespace AppGai
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class GaiDB4Entities : DbContext
+    public partial class GaiDB5Entities : DbContext
     {
-        public GaiDB4Entities()
-            : base("name=GaiDB4Entities")
+        public GaiDB5Entities()
+            : base("name=GaiDB5Entities")
         {
         }
     

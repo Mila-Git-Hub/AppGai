@@ -20,6 +20,7 @@
                 <Button Content="Нарушения" Click="ShowViolations" Margin="10"/>
                 <Button Content="Водители" Click="ShowDrivers" Margin="10"/>
                 <Button Content="Автомобили" Click="ShowCars" Margin="10"/>
+                <Button Content="Список нарушений" Click="ShowListViolation" Margin="10"/>
             </StackPanel>
         </Grid>
         <Frame Grid.Column="1" x:Name="myFrame" NavigationUIVisibility="Hidden"/>
