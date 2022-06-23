@@ -18,7 +18,9 @@ namespace AppGai
         public string idCar { get; set; }
         public System.DateTime dateStartHaving { get; set; }
         public Nullable<System.DateTime> dateEndhaving { get; set; }
-    
+
+        public string fio { get => Driver.name; }
+
         public virtual Car Car { get; set; }
         public virtual Driver Driver { get; set; }
     }

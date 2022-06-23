@@ -23,10 +23,12 @@ namespace AppGai
         GaiDB5Entities context;
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();            
             context = new GaiDB5Entities();
         }
+
         int count = 0;
+
         private void EnterClick(object sender, RoutedEventArgs e)
         {
             try
@@ -69,6 +71,11 @@ namespace AppGai
             {
                 MessageBox.Show("Ошибка!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void EnterDriver(object sender, RoutedEventArgs e)
+        {
+            myFrame.Navigate(new WinOsn());
         }
     }
 }

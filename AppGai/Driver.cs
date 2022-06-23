@@ -25,6 +25,7 @@ namespace AppGai
         public string name { get; set; }
         public string adres { get; set; }
         public decimal phone { get; set; }
+        public Nullable<int> password { get; set; }
 
         public string NumDoc { get => Doc.nameDoc; }
 

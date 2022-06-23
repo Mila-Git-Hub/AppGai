@@ -41,6 +41,7 @@
                 <ContextMenu>
                     <MenuItem Header="Редактировать" Click="EditCar"/>
                     <MenuItem Header="Удалить" Click="DeleteCar"/>
+                    <MenuItem Header="Испория владельцев" Click="History"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>

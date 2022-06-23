@@ -20,6 +20,7 @@
         </Grid.RowDefinitions>
         <Label Content="Государственная Автомобильная Инспекция" HorizontalAlignment="Center" FontSize="16" VerticalAlignment="Center" Grid.Column="1" Foreground="#302092"/>
         <Image Source="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Logo.png" Margin="5"/>
+        <Button x:Name="DrivEnter" Content="Вход для водителей" Grid.Column="1" Grid.Row="2" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center" Click="EnterDriver"/>
 
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
@@ -36,7 +37,7 @@
             <TextBox x:Name="login" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Grid.Row="2"/>
             <Label Grid.Row="3" HorizontalAlignment="Center" FontSize="16">Введите пароль</Label>
             <TextBox x:Name="password" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Grid.Row="4"/>
-            <Button x:Name="enter" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Width="100" Click="EnterClick">Вход</Button>
+            <Button x:Name="enter" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Width="100" Click="EnterClick">Вход</Button>            
         </Grid>
         <Frame x:Name="myFrame" Grid.ColumnSpan="3" Grid.RowSpan="3" NavigationUIVisibility="Hidden"/>
     </Grid>

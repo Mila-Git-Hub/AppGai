@@ -32,6 +32,7 @@
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="adres" Type="nvarchar(max)" Nullable="false" />
           <Property Name="phone" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="password" Type="int" />
         </EntityType>
         <EntityType Name="DriversCars">
           <Key>
@@ -316,6 +317,7 @@
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="phone" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="password" Type="Int32" />
           <NavigationProperty Name="Doc" Relationship="Self.FK_Driver_Doc" FromRole="Driver" ToRole="Doc" />
           <NavigationProperty Name="DriversCars" Relationship="Self.FK_DriversCars_Driver" FromRole="Driver" ToRole="DriversCars" />
           <NavigationProperty Name="Incident" Relationship="Self.FK_Incident_Driver" FromRole="Driver" ToRole="Incident" />
@@ -614,6 +616,7 @@
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="adres" ColumnName="adres" />
                 <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="password" ColumnName="password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

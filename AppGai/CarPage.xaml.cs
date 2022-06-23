@@ -88,5 +88,11 @@ namespace AppGai
                 }
             }
         }
+
+        private void History(object sender, RoutedEventArgs e)
+        {
+            Car car = cartable.SelectedItem as Car;
+            NavigationService.Navigate(new HistoryCarPage(context, car));
+        }
     }
 }

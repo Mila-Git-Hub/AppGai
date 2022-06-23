@@ -91,6 +91,9 @@
     <Compile Include="DriversCars.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="HistoryCarPage.xaml.cs">
+      <DependentUpon>HistoryCarPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Incident.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -159,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DriverPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HistoryCarPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
